@@ -27,22 +27,22 @@
         <label>Variação cor:</label>
         <select name="Cor" id="cor">
 
-            <option value="1">Cor (1 nível)</option>
-            <option value="2">Cor (2 nível)</option>
-            <option value="3">Cor (3 nível)</option>
-            <option value="4">Cor (4 nível)</option>
-            <option value="5">Cor (5 nível)</option>
+            <option value="Cor (1 nível)">Cor (1 nível)</option>
+            <option value="Cor (2 nível)">Cor (2 nível)</option>
+            <option value="Cor (3 nível)">Cor (3 nível)</option>
+            <option value="Cor (4 nível)">Cor (4 nível)</option>
+            <option value="Cor (5 nível)">Cor (5 nível)</option>
         </select>
     </div>
     <div>
         <br>
         <label>Variação Tamanho:</label>
         <select name="Tamanho" id="Tamanho">
-            <option value="1">Tamanho (1 nível)</option>
-            <option value="2">Tamanho (2 nível)</option>
-            <option value="3">Tamanho (3 nível)</option>
-            <option value="4">Tamanho (4 nível)</option>
-            <option value="5">Tamanho (5 nível)</option>
+            <option value="Tamanho (1 nível)">Tamanho (1 nível)</option>
+            <option value="Tamanho (2 nível)">Tamanho (2 nível)</option>
+            <option value="Tamanho (3 nível)">Tamanho (3 nível)</option>
+            <option value="Tamanho (4 nível)">Tamanho (4 nível)</option>
+            <option value="Tamanho (5 nível)">Tamanho (5 nível)</option>
         </select>
     </div>
     <div>

@@ -5,15 +5,40 @@ switch ($_REQUEST["acao"]) {
         $nome = $_POST["nome"];
         $descrição = $_POST["descrição"];
         $fotos = $_FILES["photo"];
-        $cor = $_POST["Tamanho"];
-        $tamanho = $_POST["Cor"];
+        $cor = $_POST["Cor"];
+        $tamanho = $_POST["Tamanho"];
         $preco = $_POST["preço"];
         $estoque = $_POST["estoque"];
         $descriçãoVariação = $_POST["descriçãoVariação"];
 
         $Destine = "www/produto/";
 
-        // Escaneando pastas para contar quantas já existem.
+    
+        //função gerador de SKU.
+        function generateSKU($nome, $descrição, $cor, $tamanho){
+            
+            $nomeSub = str_replace(' ','',$nome);
+            $nameAbreviation = strtoupper(substr($nomeSub, 0, 4));
+
+            $descriSub = str_replace(' ','',$descrição);
+            $descriAbreviation = strtoupper(substr($descriSub, 0 ,4));
+
+            $tamanhoSub = str_replace(' ','',$tamanho);
+            $tamanho = strtoupper(substr($tamanhoSub, 6, 6));
+
+            $corSub = str_replace(' ', '', $cor);
+            $corAbreviation = strtoupper(substr($corSub, 2, 6));
+
+            $sku = $nameAbreviation . '-' . $tamanho . $corAbreviation . $descriAbreviation;
+
+            return $sku;
+        }
+
+        //Codigo SKU.
+        $SKU = generateSKU($nome, $descrição, $cor, $tamanho);
+
+
+        //Escaneando pastas para contar quantas já existem.
         $ScanDir = scandir($Destine);
         $ContarPastas = 0;
 
@@ -27,16 +52,15 @@ switch ($_REQUEST["acao"]) {
             }
         }
 
-
         //informações do produto.
         $sql = "INSERT INTO `tb_products`
-        (nome_produto, descrição, preço, estoque) VALUES ('{$nome}','{$descrição}','{$preco}','$estoque')";
+        (nome_produto, descrição, preço, estoque, SKU) VALUES ('{$nome}','{$descrição}','{$preco}','$estoque','{$SKU}')";
 
-        //informações da variação.
 
         if ($conn->query($sql) === true) {
             $lastID = $conn->insert_id;
 
+             //informações da variação.
             $sql_variação = "INSERT INTO `variação`
             (descrição_variação, variação_tamanho, variação_cor, product_id) VALUES ('{$descriçãoVariação}','{$tamanho}','{$cor}','{$lastID}')";
 
@@ -53,7 +77,7 @@ switch ($_REQUEST["acao"]) {
             if (move_uploaded_file($fotos["tmp_name"], $Destine . $lastID . '/' . $fotos["name"])) {
                 echo "Foto enviada com sucesso. ";
             } else {
-                echo "Foto não foi enviada. " . print $novaPasta;
+                echo "Foto não foi enviada. ";
             }
 
             echo "Cadastro inserido. ";
