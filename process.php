@@ -1,14 +1,19 @@
 <?php
 switch ($_REQUEST["acao"]) {
     case 'cadastrar':
-        
+
         $nome = $_POST["nome"];
         $descrição = $_POST["descrição"];
         $fotos = $_FILES["photo"];
+        $cor = $_POST["Tamanho"];
+        $tamanho = $_POST["Cor"];
+        $preco = $_POST["preço"];
+        $estoque = $_POST["estoque"];
+        $descriçãoVariação = $_POST["descriçãoVariação"];
 
         $Destine = "www/produto/";
 
-        // Escaneando pastas para contar quantas já existem
+        // Escaneando pastas para contar quantas já existem.
         $ScanDir = scandir($Destine);
         $ContarPastas = 0;
 
@@ -22,28 +27,37 @@ switch ($_REQUEST["acao"]) {
             }
         }
 
-        // Criando uma nova pasta numerada
+        // Criando uma nova pasta numerada.
         $novaPasta = $Destine . ($ContarPastas + 1);
         mkdir($novaPasta, 0777, true);
 
-        // Movendo o arquivo para a nova pasta
+        // Movendo o arquivo para a nova pasta.
         if (move_uploaded_file($fotos["tmp_name"], $novaPasta . '/' . $fotos["name"])) {
-            echo "Cadastro enviado com sucesso";
+            echo "Foto enviada com sucesso. ";
         } else {
-            echo "Cadastro não foi enviado";
+            echo "Foto não foi enviada. ";
         }
-        
+
+        //informações do produto.
         $sql = "INSERT INTO `tb-products`
-        
         (nome_produto, descrição) VALUES ('{$nome}','{$descrição}')";
 
-        $res = $conn->query($sql);
+        //informações da variação.
+        $sql_variação = "INSERT INTO `variação`
+        (variação_tamanho,variação_cor,descrição_variação) VALUES ('{$tamanho}','{$cor}','{$descriçãoVariação}')";
+
+        if($conn->query($sql) === true && $conn->query($sql_variação) === true){
+            echo "Cadastro inserido. ";
+        } else {
+            echo "Cadastro não inserido. " . $conn->error;
+        }
         
+
         break;
     case 'update':
 
         break;
     case 'delete':
-        
+
         break;
 }
