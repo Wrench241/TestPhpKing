@@ -39,8 +39,8 @@ switch ($_REQUEST["acao"]) {
         }
 
         //informações do produto.
-        $sql = "INSERT INTO `tb-products`
-        (nome_produto, descrição) VALUES ('{$nome}','{$descrição}')";
+        $sql = "INSERT INTO `tb_products`
+        (nome_produto, descrição, preço, estoque) VALUES ('{$nome}','{$descrição}','{$preco}','$estoque')";
 
         //informações da variação.
         $sql_variação = "INSERT INTO `variação`
