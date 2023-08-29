@@ -1,6 +1,6 @@
 <?php
 define('USER', 'root');
-define('PASS', '');
+define('PASS', 'tt333');
 define('HOST', 'localhost');
 define('BASE', 'produtos');
 

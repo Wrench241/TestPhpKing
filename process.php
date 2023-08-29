@@ -27,31 +27,40 @@ switch ($_REQUEST["acao"]) {
             }
         }
 
-        // Criando uma nova pasta numerada.
-        $novaPasta = $Destine . ($ContarPastas + 1);
-        mkdir($novaPasta, 0777, true);
-
-        // Movendo o arquivo para a nova pasta.
-        if (move_uploaded_file($fotos["tmp_name"], $novaPasta . '/' . $fotos["name"])) {
-            echo "Foto enviada com sucesso. ";
-        } else {
-            echo "Foto não foi enviada. ";
-        }
 
         //informações do produto.
         $sql = "INSERT INTO `tb_products`
         (nome_produto, descrição, preço, estoque) VALUES ('{$nome}','{$descrição}','{$preco}','$estoque')";
 
         //informações da variação.
-        $sql_variação = "INSERT INTO `variação`
-        (variação_tamanho,variação_cor,descrição_variação) VALUES ('{$tamanho}','{$cor}','{$descriçãoVariação}')";
 
-        if($conn->query($sql) === true && $conn->query($sql_variação) === true){
+        if ($conn->query($sql) === true) {
+            $lastID = $conn->insert_id;
+
+            $sql_variação = "INSERT INTO `variação`
+            (descrição_variação, variação_tamanho, variação_cor, product_id) VALUES ('{$descriçãoVariação}','{$tamanho}','{$cor}','{$lastID}')";
+
+            $conn->query($sql_variação);
+
+            $novaPasta = $Destine . $lastID;
+
+            if (!is_dir($novaPasta)) {
+                // Criando uma nova pasta com ulitmo ID.
+                mkdir($novaPasta, 0777, true);
+            }
+
+            // Movendo o arquivo para a nova pasta.
+            if (move_uploaded_file($fotos["tmp_name"], $Destine . $lastID . '/' . $fotos["name"])) {
+                echo "Foto enviada com sucesso. ";
+            } else {
+                echo "Foto não foi enviada. " . print $novaPasta;
+            }
+
             echo "Cadastro inserido. ";
         } else {
             echo "Cadastro não inserido. " . $conn->error;
         }
-        
+
 
         break;
     case 'update':
