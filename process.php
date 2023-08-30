@@ -29,7 +29,7 @@ switch ($_REQUEST["acao"]) {
             $corSub = str_replace(' ', '', $cor);
             $corAbreviation = strtoupper(substr($corSub, 2, 6));
 
-            $sku = $nameAbreviation . '-' . $tamanho . $corAbreviation . $descriAbreviation;
+            $sku = str_replace('(','',$nameAbreviation . '-' . $tamanho .'-'. $corAbreviation .'-'. $descriAbreviation);
 
             return $sku;
         }
@@ -91,6 +91,6 @@ switch ($_REQUEST["acao"]) {
 
         break;
     case 'delete':
-
+        
         break;
 }

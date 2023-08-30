@@ -27,6 +27,7 @@
         <label>Variação cor:</label>
         <select name="Cor" id="cor">
 
+        
             <option value="Cor (1 nível)">Cor (1 nível)</option>
             <option value="Cor (2 nível)">Cor (2 nível)</option>
             <option value="Cor (3 nível)">Cor (3 nível)</option>
