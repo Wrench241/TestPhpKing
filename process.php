@@ -13,23 +13,24 @@ switch ($_REQUEST["acao"]) {
 
         $Destine = "www/produto/";
 
-    
+
         //função gerador de SKU.
-        function generateSKU($nome, $descrição, $cor, $tamanho){
-            
-            $nomeSub = str_replace(' ','',$nome);
+        function generateSKU($nome, $descrição, $cor, $tamanho)
+        {
+
+            $nomeSub = str_replace(' ', '', $nome);
             $nameAbreviation = strtoupper(substr($nomeSub, 0, 4));
 
-            $descriSub = str_replace(' ','',$descrição);
-            $descriAbreviation = strtoupper(substr($descriSub, 0 ,4));
+            $descriSub = str_replace(' ', '', $descrição);
+            $descriAbreviation = strtoupper(substr($descriSub, 0, 4));
 
-            $tamanhoSub = str_replace(' ','',$tamanho);
+            $tamanhoSub = str_replace(' ', '', $tamanho);
             $tamanho = strtoupper(substr($tamanhoSub, 6, 6));
 
             $corSub = str_replace(' ', '', $cor);
             $corAbreviation = strtoupper(substr($corSub, 2, 6));
 
-            $sku = str_replace('(','',$nameAbreviation . '-' . $tamanho .'-'. $corAbreviation .'-'. $descriAbreviation);
+            $sku = str_replace('(', '', $nameAbreviation . '-' . $tamanho . '-' . $corAbreviation . '-' . $descriAbreviation);
 
             return $sku;
         }
@@ -60,7 +61,7 @@ switch ($_REQUEST["acao"]) {
         if ($conn->query($sql) === true) {
             $lastID = $conn->insert_id;
 
-             //informações da variação.
+            //informações da variação.
             $sql_variação = "INSERT INTO `variação`
             (descrição_variação, variação_tamanho, variação_cor, product_id) VALUES ('{$descriçãoVariação}','{$tamanho}','{$cor}','{$lastID}')";
 
@@ -84,13 +85,40 @@ switch ($_REQUEST["acao"]) {
         } else {
             echo "Cadastro não inserido. " . $conn->error;
         }
-
+    
 
         break;
     case 'update':
 
+        //atualizando dados.
+        $nome = $_POST["nome"];
+        $descrição = $_POST["descrição"];
+        $fotos = $_FILES["photo"];
+        $cor = $_POST["Cor"];
+        $tamanho = $_POST["Tamanho"];
+        $preco = $_POST["preço"];
+        $estoque = $_POST["estoque"];
+        $descriçãoVariação = $_POST["descriçãoVariação"];
+
+        $sql = "UPDATE `tb_products` SET
+        `nome_produto` = '{$nome}',
+        `descrição` = '{$descrição}',
+        `preço` = '{$preco}',
+        `estoque` = '{$estoque}'
+        WHERE `id` =" . $_REQUEST["id"];
+
+        $res = $conn->query($sql);
+
+        $sql_variação = "UPDATE `variação` SET
+        `descrição_variação` = '{$descriçãoVariação}',
+        `variação_tamanho` = '{$tamanho}',
+        `variação_cor` = '{$cor}'
+        WHERE `product_id` =". $_REQUEST["id"];
+        
+        $resVariação = $conn->query($sql_variação);
+
         break;
     case 'delete':
-        
+
         break;
 }

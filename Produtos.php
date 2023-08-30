@@ -15,6 +15,7 @@ if ($column == 0) {
     print "<th>descrição</th>";
     print "<th>preço</th>";
     print "<th>estoque</th>";
+    print "<th>ação</th>";
     print "</tr>";
     while ($row = $res->fetch_object()) {
         print "<tr>";
@@ -23,7 +24,7 @@ if ($column == 0) {
         $Destine = "www/produto/" . $row->id . "/";
 
         if (is_dir($Destine)) {
-            //escaneamento da pasta.
+            //buscando fotos do produto.
             $imagens = scandir($Destine);
             foreach ($imagens as $imagem) {
                 if ($imagem != '.' && $imagem != '..') {
@@ -36,6 +37,8 @@ if ($column == 0) {
         print "<td>" . $row->descrição;
         print "<td>" . $row->preço;
         print "<td>" . $row->estoque;
+        print "<td><button onclick=\"location.href='?page=editar&id=".$row->id."';\">editar</button>
+        <button>excluir</button>";
         print "</tr>";
     }
     print "</table>";

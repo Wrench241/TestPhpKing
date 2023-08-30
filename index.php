@@ -14,7 +14,7 @@
     <div class="container">
         <div class="row">
             <div class="col mt-5">
-            <?php
+                <?php
                 include("config.php");
                 $page = isset($_REQUEST["page"]) ? $_REQUEST["page"] : "";
 
@@ -27,6 +27,9 @@
                         break;
                     case "save-product":
                         include("process.php");
+                        break;
+                    case "editar":
+                        include("editar.php");
                         break;
                     default:
                         echo "<h1>Bem vindo</h1>";
