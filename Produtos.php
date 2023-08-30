@@ -38,7 +38,7 @@ if ($column == 0) {
         print "<td>" . $row->preço;
         print "<td>" . $row->estoque;
         print "<td><button onclick=\"location.href='?page=editar&id=".$row->id."';\">editar</button>
-        <button>excluir</button>";
+        <button onclick=\"if(confirm('Deseja excluir este produto?')){location.href='?page=save-product&acao=delete&id=".$row->id."';}else{false;}\">excluir</button>";
         print "</tr>";
     }
     print "</table>";

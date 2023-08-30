@@ -86,7 +86,6 @@ switch ($_REQUEST["acao"]) {
             echo "Cadastro não inserido. " . $conn->error;
         }
     
-
         break;
     case 'update':
 
@@ -120,5 +119,19 @@ switch ($_REQUEST["acao"]) {
         break;
     case 'delete':
 
+        //deletando produto.
+        $sql_variação = "DELETE FROM `variação` WHERE `product_id` =".$_REQUEST["id"];
+        $rest = $conn->query($sql_variação);
+        $sql = "DELETE FROM `tb_products` WHERE `id` =".$_REQUEST["id"];
+        $resVariação = $conn->query($sql);
+
+        if($resVariação === true){
+            print "<script>alert('Excluído com sucesso.')</script>";
+            print "<script>location.href='?page=produtos';</script>";
+            
+        } else {
+            print "<script>alert('Não foi possível excluir.')</script>";
+            print "<script>location.href='?page=produtos';</script>";
+        }
         break;
 }
