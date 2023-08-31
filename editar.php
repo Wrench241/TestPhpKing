@@ -35,7 +35,7 @@ $row = $res->fetch_object();
     </div>
     <div>
         <label">Fotos:</label><br>
-            <input type="file" name="photo">
+            <input type="file" name="photo_update">
     </div>
     <div>
         <br>

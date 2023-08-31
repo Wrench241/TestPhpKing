@@ -85,14 +85,14 @@ switch ($_REQUEST["acao"]) {
         } else {
             echo "Cadastro não inserido. " . $conn->error;
         }
-    
+
         break;
     case 'update':
 
         //atualizando dados.
         $nome = $_POST["nome"];
         $descrição = $_POST["descrição"];
-        $fotos = $_FILES["photo"];
+        $fotos = $_FILES["photo_update"];
         $cor = $_POST["Cor"];
         $tamanho = $_POST["Tamanho"];
         $preco = $_POST["preço"];
@@ -112,23 +112,51 @@ switch ($_REQUEST["acao"]) {
         `descrição_variação` = '{$descriçãoVariação}',
         `variação_tamanho` = '{$tamanho}',
         `variação_cor` = '{$cor}'
-        WHERE `product_id` =". $_REQUEST["id"];
-        
+        WHERE `product_id` =" . $_REQUEST["id"];
+
         $resVariação = $conn->query($sql_variação);
 
+        $Destine = "www/produto/";
+        //metodo para atualizar foto.
+        $path = $Destine . $_REQUEST["id"];
+        if (isset($_FILES["photo_update"]) && isset($_REQUEST["id"])) {
+
+            $fileName = $_FILES["photo_update"]["name"];
+
+            //varificando se existe foto anterior na pasta.
+            if (!empty($fileName)) {
+
+                $files = glob($path . '/*');
+                foreach ($files as $file) {
+                    if (is_file($file)) {
+                        unlink($file);
+                    }
+                }
+
+                //movendo foto nova para o diretorio.
+                if (move_uploaded_file($_FILES["photo_update"]["tmp_name"], $path . "/" . $fileName)) {
+
+                    print "<script>alert('Foto atualizada com sucesso.')</script>";
+                    print "<script>location.href='?page=produtos';</script>";
+                } else {
+                    print "<script>alert('nenhuma foto enviada ou ID não fornecido')</script>";
+                    print "<script>location.href='?page=produtos';</script>";
+                }
+            }
+            print "<script>location.href='?page=produtos';</script>";
+        }
         break;
     case 'delete':
 
         //deletando produto.
-        $sql_variação = "DELETE FROM `variação` WHERE `product_id` =".$_REQUEST["id"];
+        $sql_variação = "DELETE FROM `variação` WHERE `product_id` =" . $_REQUEST["id"];
         $rest = $conn->query($sql_variação);
-        $sql = "DELETE FROM `tb_products` WHERE `id` =".$_REQUEST["id"];
+        $sql = "DELETE FROM `tb_products` WHERE `id` =" . $_REQUEST["id"];
         $resVariação = $conn->query($sql);
 
-        if($resVariação === true){
+        if ($resVariação === true) {
             print "<script>alert('Excluído com sucesso.')</script>";
             print "<script>location.href='?page=produtos';</script>";
-            
         } else {
             print "<script>alert('Não foi possível excluir.')</script>";
             print "<script>location.href='?page=produtos';</script>";
