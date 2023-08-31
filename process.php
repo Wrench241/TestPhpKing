@@ -76,9 +76,11 @@ switch ($_REQUEST["acao"]) {
 
             // Movendo o arquivo para a nova pasta.
             if (move_uploaded_file($fotos["tmp_name"], $Destine . $lastID . '/' . $fotos["name"])) {
-                echo "Foto enviada com sucesso. ";
+
+                print "<script>location.href='?page=produtos';</script>";
             } else {
-                echo "Foto não foi enviada. ";
+                print "<script>alert('Nenhuma foto enviada.')</script> ";
+                print "<script>location.href='?page=produtos';</script>";
             }
 
             echo "Cadastro inserido. ";
@@ -154,12 +156,28 @@ switch ($_REQUEST["acao"]) {
         $sql = "DELETE FROM `tb_products` WHERE `id` =" . $_REQUEST["id"];
         $resVariação = $conn->query($sql);
 
-        if ($resVariação === true) {
-            print "<script>alert('Excluído com sucesso.')</script>";
-            print "<script>location.href='?page=produtos';</script>";
+        $path = "www/produto/" . $_REQUEST["id"];
+
+        //apagando diretorio da foto.
+        $files = glob($path . "/*");
+        if (is_dir($path)) {
+            foreach ($files as $file) {
+                if (is_file($file)) {
+                    unlink($file);
+                }
+            }
+            rmdir($path);
+
+            if ($resVariação === true) {
+                print "<script>alert('Excluído com sucesso.')</script>";
+                print "<script>location.href='?page=produtos';</script>";
+                print $error;
+            } else {
+                print "<script>alert('Não foi possível excluir.')</script>";
+                print "<script>location.href='?page=produtos';</script>";
+            }
         } else {
-            print "<script>alert('Não foi possível excluir.')</script>";
-            print "<script>location.href='?page=produtos';</script>";
+            print "<script>alert('Diretorio não encontrado.');</script>";
         }
         break;
 }

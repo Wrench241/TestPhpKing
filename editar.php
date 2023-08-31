@@ -41,22 +41,22 @@ $row = $res->fetch_object();
         <br>
         <label>Variação cor:</label>
         <select name="Cor" id="cor">
-            <option value="Cor (1 nível)">Cor (1 nível)</option>
-            <option value="Cor (2 nível)">Cor (2 nível)</option>
-            <option value="Cor (3 nível)">Cor (3 nível)</option>
-            <option value="Cor (4 nível)">Cor (4 nível)</option>
-            <option value="Cor (5 nível)">Cor (5 nível)</option>
+            <option value="Cor (1 nível)" <?php if ($rowVariação->variação_cor === "Cor (1 nível)") echo "selected"; ?>>Cor (1 nível)</option>
+            <option value="Cor (2 nível)" <?php if ($rowVariação->variação_cor === "Cor (2 nível)") echo "selected"; ?>>Cor (2 nível)</option>
+            <option value="Cor (3 nível)" <?php if ($rowVariação->variação_cor === "Cor (3 nível)") echo "selected"; ?>>Cor (3 nível)</option>
+            <option value="Cor (4 nível)" <?php if ($rowVariação->variação_cor === "Cor (4 nível)") echo "selected"; ?>>Cor (4 nível)</option>
+            <option value="Cor (5 nível)" <?php if ($rowVariação->variação_cor === "Cor (5 nível)") echo "selected"; ?>>Cor (5 nível)</option>
         </select>
     </div>
     <div>
         <br>
         <label>Variação Tamanho:</label>
         <select name="Tamanho" id="Tamanho">
-            <option value="Tamanho (1 nível)">Tamanho (1 nível)</option>
-            <option value="Tamanho (2 nível)">Tamanho (2 nível)</option>
-            <option value="Tamanho (3 nível)">Tamanho (3 nível)</option>
-            <option value="Tamanho (4 nível)">Tamanho (4 nível)</option>
-            <option value="Tamanho (5 nível)">Tamanho (5 nível)</option>
+            <option value="Tamanho (1 nível)" <?php if ($rowVariação->variação_tamanho === "Tamanho (1 nível)") echo "selected"; ?>>Tamanho (1 nível)</option>
+            <option value="Tamanho (2 nível)" <?php if ($rowVariação->variação_tamanho === "Tamanho (2 nível)") echo "selected"; ?>>Tamanho (2 nível)</option>
+            <option value="Tamanho (3 nível)" <?php if ($rowVariação->variação_tamanho === "Tamanho (3 nível)") echo "selected"; ?>>Tamanho (3 nível)</option>
+            <option value="Tamanho (4 nível)" <?php if ($rowVariação->variação_tamanho === "Tamanho (4 nível)") echo "selected"; ?>>Tamanho (4 nível)</option>
+            <option value="Tamanho (5 nível)" <?php if ($rowVariação->variação_tamanho === "Tamanho (5 nível)") echo "selected"; ?>>Tamanho (5 nível)</option>
         </select>
     </div>
     <div>
