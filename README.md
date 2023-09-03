@@ -6,4 +6,10 @@ Banco de dados: MySql.<br>
 Linguagem: Php.<br>
 Framework: nenhum, como na descrição do teste.
 
+# Banco de dados<br>
+user: root<br>
+pass: tt333<br>
+server: localhost<br>
+bancodedados: produtos<br>
+
 Obrigado pela oportunidade KING.
