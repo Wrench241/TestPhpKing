@@ -6,6 +6,25 @@
         resize: none;
         font-size: 16px;
     }
+
+    label {
+        font-weight: bold;
+    }
+
+    button {
+        background-color: #007bff;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    }
+    button:hover{
+        background-color: #0056b3;
+    }
 </style>
 <h1>Cadastro</h1>
 <form action="?page=save-product" method="POST" enctype="multipart/form-data">
@@ -19,15 +38,15 @@
         <textarea class="text-area" name="descrição" type="descrição" placeholder="descrição."></textarea>
     </div>
     <div>
-        <label">Fotos:</label><br>
-            <input type="file" name="photo">
+        <label>Fotos:</label><br>
+        <input type="file" name="photo">
     </div>
     <div>
         <br>
         <label>Variação cor:</label>
         <select name="Cor" id="cor">
 
-        
+
             <option value="Cor (1 nível)">Cor (1 nível)</option>
             <option value="Cor (2 nível)">Cor (2 nível)</option>
             <option value="Cor (3 nível)">Cor (3 nível)</option>
@@ -56,6 +75,6 @@
         <input type="number" id="number" name="preço" step="any" placeholder="valor"><br><br>
         <label for="descrição">Descrição da variação:</label><br>
         <textarea class="text-area" name="descriçãoVariação" placeholder="descrição."></textarea>
-        <br><br><button type="submit">finalizar</button>
+        <br><br><button type="submit">Salvar</button>
     </div>
 </form>

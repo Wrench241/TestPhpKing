@@ -6,6 +6,20 @@
         resize: none;
         font-size: 16px;
     }
+    button{
+        background-color: #007bff;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    }
+    button:hover{
+        background-color: #0056b3;
+    }
 </style>
 <h1>Editar</h1>
 <?php
@@ -69,6 +83,6 @@ $row = $res->fetch_object();
         <input type="number" id="number" name="preço" value="<?php print $row->preço ?>" step="any" placeholder="valor"><br><br>
         <label for="descrição">Descrição da variação:</label><br>
         <textarea class="text-area" name="descriçãoVariação" placeholder="descrição."><?php print $rowVariação->descrição_variação ?></textarea>
-        <br><br><button type="submit">finalizar</button>
+        <br><br><button type="submit">Salvar</button>
     </div>
 </form>
