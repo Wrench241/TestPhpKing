@@ -24,6 +24,8 @@
         }
 
         .menu-toggle {
+            display: flex;
+            align-items: center;
             cursor: pointer;
             font-size: 24px;
             padding: 10px;
@@ -31,9 +33,8 @@
             color: #fff;
             padding: 10px 20px;
             border: none;
-            border-radius: 4px;
+            border-radius: 0px;
             font-size: 16px;
-            cursor: pointer;
             transition: background-color 0.3s;
             box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
         }
@@ -54,6 +55,7 @@
 
         .slide-menu li {
             padding: 15px;
+
         }
 
         .slide-menu a {
@@ -62,9 +64,6 @@
             transition: 0.3s;
         }
 
-        .slide-menu a:hover {
-            color: #007BFF;
-        }
 
         .content {
             margin-left: 0;
@@ -74,11 +73,12 @@
 
         .button-menu {
             background-color: #007bff;
+            margin-right: -45px;
             color: #fff;
-            padding: 10px 20px;
+            padding: 5px 10px;
             border: none;
             border-radius: 4px;
-            font-size: 16px;
+            font-size: 21px;
             cursor: pointer;
             transition: background-color 0.3s;
             box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
@@ -87,20 +87,105 @@
         .button-menu:hover {
             background-color: #0056b3;
         }
+
+        .responsive-heading {
+            flex: 1;
+            margin: 0;
+            font-size: 2em;
+            max-width: 100%;
+        }
+
+        .li-menu-button {
+            background-color: #007bff;
+            margin-right: -45px;
+            color: #fff;
+            padding: 5px 10px;
+            border: none;
+            font-size: 21px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .li-menu-button:hover {
+            background-color: #0056b3;
+        }
+
+        .border-white {
+            border: 1px solid white;
+        }
+        .side-nav-content{
+            color: white;
+            width: 230px;
+            margin-left: 10px;
+            margin-right: 10px;
+            margin-top: 10px;
+        }
+
+        .nav-list {
+            list-style: none;
+            height: 100%;
+            padding: 0%;
+            margin-bottom: 0%;
+            
+        }
+
+        .nav-list-item {
+            display: flex;
+            align-items: center;
+            height: 30px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        .nav-list-item:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            
+        }
+        
+        .nav-list-item a {
+            text-decoration: none;
+            color: white;
+           
+        }
+
+        .nav-list-item span {
+            width: 120px;
+            text-align: capitalize;
+            
+        }
     </style>
 </head>
 
 <body>
     <div class="menu-toggle">
         <button class="button-menu" onclick="toggleMenu()">☰</button>
-        <h1 style="text-align: center;">Teste Php</h1>
 
     </div>
     <nav class="slide-menu">
-        <button><a href="#">X</a></button>
-        <button><a href="index.php">Inicio</a></button>
-        <button><a href="?page=cadastro">Novo Cadastro</a></button>
-        <button><a href="?page=produtos">Produtos</a></button>
+    <div class="side-nav-content">
+        <ul class="nav-list">
+            <li class="nav-list-item">
+                <span>
+                    <a href="index.php">inicio</a>
+                </span>
+            </li>
+            <br>
+            <li class="nav-list-item">
+                <span>
+                    <a href="?page=cadastro">Novo Cadastro</a>
+                </span>
+            </li>
+            <br>
+            <li class="nav-list-item">
+                <span>
+                    <a href="?page=produtos">Produtos</a>
+                </span>
+            </li>
+        </ul>
+        </div>
     </nav>
     <div class="content">
         <?php
@@ -129,12 +214,12 @@
         function toggleMenu() {
             const slideMenu = document.querySelector('.slide-menu');
             const content = document.querySelector('.content');
-            if (slideMenu.style.wigth === '250px') {
-                slideMenu.style.wigth = '0';
+            if (slideMenu.style.width === '250px') {
+                slideMenu.style.width = '0';
                 content.style.marginLeft = '0';
             } else {
-                slideMenu.style.wigth = '250px';
-                content.style.marginLeft = '170px';
+                slideMenu.style.width = '250px';
+                content.style.marginLeft = '140px';
             }
         }
     </script>

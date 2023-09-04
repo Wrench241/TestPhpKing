@@ -28,6 +28,9 @@
     .editar:hover{
         background-color: #0056b3;
     }
+    td {
+        text-align: center;
+    }
 </style>
 <?php
 $sql = "SELECT * FROM tb_products";
