@@ -43,7 +43,7 @@
             position: fixed;
             width: 0;
             height: 100%;
-            background-color: #333;
+            background-color: #007bff;
             overflow-y: hidden;
             transition: 0.5s;
         }
@@ -95,22 +95,6 @@
             max-width: 100%;
         }
 
-        .li-menu-button {
-            background-color: #007bff;
-            margin-right: -45px;
-            color: #fff;
-            padding: 5px 10px;
-            border: none;
-            font-size: 21px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-        }
-
-        .li-menu-button:hover {
-            background-color: #0056b3;
-        }
-
         .border-white {
             border: 1px solid white;
         }
@@ -156,13 +140,26 @@
             text-align: capitalize;
             
         }
+        .title{
+            width: 100%;
+            margin-left: 12%;
+            align-items: center;
+            text-align: center;
+        }
+        .title h1{
+            font-size: 14pt;
+            margin-right: 15%;
+            
+        }
     </style>
 </head>
 
 <body>
     <div class="menu-toggle">
         <button class="button-menu" onclick="toggleMenu()">☰</button>
-
+        <div class="title">
+        <h1>TestPhp</h1>
+        </div>
     </div>
     <nav class="slide-menu">
     <div class="side-nav-content">
