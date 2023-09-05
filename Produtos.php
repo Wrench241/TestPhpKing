@@ -1,5 +1,6 @@
 <h1>produtos</h1>
 <style>
+   
     .editar{
         background-color: #007bff;
             color: #fff;
@@ -40,7 +41,7 @@ $column = $res->num_rows;
 if ($column == 0) {
     print "<h1>nenhum produto encontrado.</h1>";
 } else {
-    print "<table cellspacing='10';>";
+    print "<table class='responsive-table' cellspacing='10';>";
     print "<tr>";
     print "<th>foto</th>";
     print "<th>nome do produto</th>";

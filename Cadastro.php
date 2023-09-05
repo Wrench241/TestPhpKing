@@ -22,8 +22,13 @@
         transition: background-color 0.3s;
         box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
     }
-    button:hover{
+
+    button:hover {
         background-color: #0056b3;
+    }
+
+    form {
+        width: 100%;
     }
 </style>
 <h1>Cadastro</h1>
@@ -75,6 +80,16 @@
         <input type="number" id="number" name="preço" step="any" placeholder="valor"><br><br>
         <label for="descrição">Descrição da variação:</label><br>
         <textarea class="text-area" name="descriçãoVariação" placeholder="descrição."></textarea>
-        <br><br><button type="submit">Salvar</button>
+        <?php if (empty($_POST["nome"])) {
+            print "<pre style='color: red;'>preencha o campo nome.</pre>";
+        } elseif (empty($_POST["descrição"])) {
+            print "<pre style='color: red;'>preencha o campo descrição.</pre>";
+        } elseif (empty($_POST["preço"])) {
+            print "<pre style='color: red;'>preencha o campo preço.</pre>";
+        } elseif (empty($_POST["estoque"])) {
+            print "<pre style='color: red;'>preencha o campo estoque.</pre>";
+        }
+        ?>
+        <br><br><button onclick="" type="submit">Salvar</button>
     </div>
 </form>
