@@ -32,15 +32,28 @@
     }
 </style>
 <h1>Cadastro</h1>
+<?php
+        if (isset($_POST["enviar"])) {
+            $nome = trim($_POST["nome"]);
+            $descricao = trim($_POST["descricao"]);
+            $preco = trim($_POST["preco"]);
+            $estoque = trim($_POST["estoque"]);
+        
+            if (empty($nome) || empty($descricao) || empty($preco) || empty($estoque)) {
+                print "<script>window.location.href='?page=cadastro';</script>";
+                print "<p style='color: red;'>preencha todos campos.</p>";
+            }
+        }
+        ?>
 <form action="?page=save-product" method="POST" enctype="multipart/form-data">
     <input type="hidden" name="acao" value="cadastrar">
     <div>
         <label>Digite o nome do produto:</label><br>
-        <input type="produto" name="nome">
+        <input type="text" name="nome">
     </div>
     <div>
         <label>Digite a descrição do produto:</label><br>
-        <textarea class="text-area" name="descrição" type="descrição" placeholder="descrição."></textarea>
+        <textarea class="text-area" name="descricao" type="text" placeholder="descrição."></textarea>
     </div>
     <div>
         <label>Fotos:</label><br>
@@ -77,19 +90,10 @@
         <br>
         <br>
         <label for="numeroDecimal">Preço:</label>
-        <input type="number" id="number" name="preço" step="any" placeholder="valor"><br><br>
+        <input type="number" id="number" name="preco" step="any" placeholder="valor"><br><br>
         <label for="descrição">Descrição da variação:</label><br>
         <textarea class="text-area" name="descriçãoVariação" placeholder="descrição."></textarea>
-        <?php if (empty($_POST["nome"])) {
-            print "<pre style='color: red;'>preencha o campo nome.</pre>";
-        } elseif (empty($_POST["descrição"])) {
-            print "<pre style='color: red;'>preencha o campo descrição.</pre>";
-        } elseif (empty($_POST["preço"])) {
-            print "<pre style='color: red;'>preencha o campo preço.</pre>";
-        } elseif (empty($_POST["estoque"])) {
-            print "<pre style='color: red;'>preencha o campo estoque.</pre>";
-        }
-        ?>
-        <br><br><button onclick="" type="submit">Salvar</button>
+        <br><br>
+        <button name="enviar" type="submit">Salvar</button>
     </div>
 </form>

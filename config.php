@@ -25,19 +25,19 @@ if ($res01->num_rows > 0 && $res02->num_rows >0) {
         id INT AUTO_INCREMENT PRIMARY KEY,
         nome_produto VARCHAR(40) NOT NULL,
         SKU VARCHAR(80) UNIQUE NOT NULL,
-        descricao TEXT,
-        preco DECIMAL(10, 2) NOT NULL,
+        descrição TEXT,
+        preço DECIMAL(10, 2) NOT NULL,
         estoque INT NOT NULL
     );";
 
     $table_variação = "
     CREATE TABLE $table02 (
         id INT AUTO_INCREMENT PRIMARY KEY,
-        descricao_variacao VARCHAR(30) NOT NULL,
-        variacao_tamanho VARCHAR(20),
-        variacao_cor VARCHAR(20),
+        descrição_variação VARCHAR(30) NOT NULL,
+        variação_tamanho VARCHAR(20),
+        variação_cor VARCHAR(20),
         product_id INT NOT NULL,
-        FOREIGN KEY (product_id) REFERENCES produtos(id)
+        FOREIGN KEY (product_id) REFERENCES $table01(id)
     );
     ";
 
