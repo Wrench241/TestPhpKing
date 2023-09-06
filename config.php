@@ -1,4 +1,5 @@
 <?php
+
 define('USER', 'root');
 define('PASS', 'tt333');
 define('HOST', 'localhost');
@@ -15,8 +16,7 @@ $sql02 = "SHOW TABLES LIKE '$table02'";
 $res01 = $conn->query($sql01);
 $res02 = $conn->query($sql02);
 
-if ($res01->num_rows > 0 && $res02->num_rows >0) {
-    
+if ($res01->num_rows > 0 && $res02->num_rows > 0) {
 } else {
     echo "criando relação de tabelas.";
 
@@ -43,11 +43,10 @@ if ($res01->num_rows > 0 && $res02->num_rows >0) {
 
     $res = $conn->multi_query($table_products . $table_variação);
 
-    if ($res){
+    if ($res) {
         echo "tabelas criadas.";
         print "<script>window.location.href='?page=index.php';</script>";
     } else {
         echo "algo de errado não esta certo.";
     }
-
 }

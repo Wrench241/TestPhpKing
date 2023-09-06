@@ -34,7 +34,13 @@
     }
 </style>
 <?php
-$sql = "SELECT * FROM tb_products";
+//verifica se é mobile e redireciona para outra pagina responsiva.
+$agent = $_SERVER["HTTP_USER_AGENT"];
+if(strpos($agent, "Mobile") !== false || strpos($agent, "Android") !== false){
+    print "<script>window.location.href='?page=mobile';</script>";
+}
+
+    $sql = "SELECT * FROM tb_products";
 $res = $conn->query($sql);
 $column = $res->num_rows;
 

@@ -98,7 +98,8 @@
         .border-white {
             border: 1px solid white;
         }
-        .side-nav-content{
+
+        .side-nav-content {
             color: white;
             width: 230px;
             margin-left: 10px;
@@ -111,7 +112,7 @@
             height: 100%;
             padding: 0%;
             margin-bottom: 0%;
-            
+
         }
 
         .nav-list-item {
@@ -123,33 +124,36 @@
             transition: background-color 0.3s;
             box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
         }
+
         .nav-list-item:hover {
             background-color: rgba(255, 255, 255, 0.3);
             border-radius: 10px;
-            
+
         }
-        
+
         .nav-list-item a {
             text-decoration: none;
             color: white;
-           
+
         }
 
         .nav-list-item span {
             width: 120px;
             text-align: capitalize;
-            
+
         }
-        .title{
+
+        .title {
             width: 100%;
             margin-left: 12%;
             align-items: center;
             text-align: center;
         }
-        .title h1{
+
+        .title h1 {
             font-size: 14pt;
             margin-right: 15%;
-            
+
         }
     </style>
 </head>
@@ -158,30 +162,30 @@
     <div class="menu-toggle">
         <button class="button-menu" onclick="toggleMenu()">☰</button>
         <div class="title">
-        <h1>TestPhp</h1>
+            <h1>TestPhp</h1>
         </div>
     </div>
     <nav class="slide-menu">
-    <div class="side-nav-content">
-        <ul class="nav-list">
-            <li class="nav-list-item">
-                <span>
-                    <a href="index.php">inicio</a>
-                </span>
-            </li>
-            <br>
-            <li class="nav-list-item">
-                <span>
-                    <a href="?page=cadastro">Novo Cadastro</a>
-                </span>
-            </li>
-            <br>
-            <li class="nav-list-item">
-                <span>
-                    <a href="?page=produtos">Produtos</a>
-                </span>
-            </li>
-        </ul>
+        <div class="side-nav-content">
+            <ul class="nav-list">
+                <li class="nav-list-item">
+                    <span>
+                        <a href="index.php">inicio</a>
+                    </span>
+                </li>
+                <br>
+                <li class="nav-list-item">
+                    <span>
+                        <a href="?page=cadastro">Novo Cadastro</a>
+                    </span>
+                </li>
+                <br>
+                <li class="nav-list-item">
+                    <span>
+                        <a href="?page=produtos">Produtos</a>
+                    </span>
+                </li>
+            </ul>
         </div>
     </nav>
     <div class="content">
@@ -201,6 +205,9 @@
                 break;
             case "editar":
                 include("editar.php");
+                break;
+            case "mobile":
+                include("produtos-mobile.php");
                 break;
             default:
                 echo "<h1>Bem vindo</h1>";
