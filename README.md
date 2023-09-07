@@ -10,6 +10,6 @@ Framework: nenhum, como na descrição do teste.
 user: root<br>
 pass: tt333<br>
 server: localhost<br>
-bancodedados: produtos<br>
+banco de dados: produtos<br>
 
 Obrigado pela oportunidade KING.

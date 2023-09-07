@@ -35,8 +35,8 @@
 <?php
         if (isset($_POST["enviar"])) {
             $nome = trim($_POST["nome"]);
-            $descricao = trim($_POST["descricao"]);
-            $preco = trim($_POST["preco"]);
+            $descricao = trim($_POST["descrição"]);
+            $preco = trim($_POST["preço"]);
             $estoque = trim($_POST["estoque"]);
         
             if (empty($nome) || empty($descricao) || empty($preco) || empty($estoque)) {
@@ -53,7 +53,7 @@
     </div>
     <div>
         <label>Digite a descrição do produto:</label><br>
-        <textarea class="text-area" name="descricao" type="text" placeholder="descrição."></textarea>
+        <textarea class="text-area" name="descrição" type="text" placeholder="descrição."></textarea>
     </div>
     <div>
         <label>Fotos:</label><br>
@@ -90,7 +90,7 @@
         <br>
         <br>
         <label for="numeroDecimal">Preço:</label>
-        <input type="number" id="number" name="preco" step="any" placeholder="valor"><br><br>
+        <input type="number" id="number" name="preço" step="any" placeholder="valor"><br><br>
         <label for="descrição">Descrição da variação:</label><br>
         <textarea class="text-area" name="descriçãoVariação" placeholder="descrição."></textarea>
         <br><br>

@@ -5,6 +5,7 @@
         color: #fff;
         padding: 10px 15px;
         border: none;
+        margin-left: -3px;
         border-radius: 4px;
         font-size: 16px;
         cursor: pointer;
@@ -48,16 +49,22 @@
         text-align: top;
     }
 
+    .product-row button {
+        margin-top: 4px;
+    }
     .product-row img {
         margin-right: 250px;
     }
     .location-text{
-        width: 180px;
         height: 200px;
-        margin-left: 155px;
-        margin-top: -205px;
+        width: 55%;
+        margin-left: 162px;
+        margin-top: -214px;
     }
-    
+    p {
+        font-weight: bold;
+        font-size: 14px;
+    }
 </style>
 
 <?php
@@ -88,10 +95,10 @@ if ($column == 0) {
         echo "<button class='excluir' onclick=\"if(confirm('Deseja excluir este produto?')){location.href='?page=save-product&acao=delete&id=" . $row->id . "';}else{false;}\">excluir</button>";
         echo "<div class='location-text'>";
         echo "<h2>" . $row->nome_produto . "</h2>";
-        echo "<p>descrição: " . $row->descrição . "</p>";
+        echo "<p>Descrição:<br>" . $row->descrição . "</p>";
         echo "<p>Preço: " . $row->preço . "</p>";
         echo "<p>Estoque: " . $row->estoque . "</p>";
-        echo "<p>SKU: " . $row->SKU . "</p>";
+        echo "<p>Sku: " . $row->SKU . "</p>";
         echo "</div>";
         echo "<div class='div-location'>";
 
