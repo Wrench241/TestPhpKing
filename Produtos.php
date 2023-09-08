@@ -15,7 +15,7 @@
     .excluir{
         background-color: red;
             color: #fff;
-            padding: 10px 20px;
+            padding: 9px 18px;
             border: none;
             border-radius: 4px;
             font-size: 16px;
@@ -31,6 +31,13 @@
     }
     td {
         text-align: center;
+        font-weight: bold;
+
+  
+        
+    }
+    table {
+        width: 80%;
     }
 </style>
 <?php
@@ -47,15 +54,15 @@ $column = $res->num_rows;
 if ($column == 0) {
     print "<h1>nenhum produto encontrado.</h1>";
 } else {
-    print "<table class='responsive-table' cellspacing='10';>";
+    print "<table cellspacing='10';>";
     print "<tr>";
-    print "<th>foto</th>";
-    print "<th>nome do produto</th>";
-    print "<th>descrição</th>";
-    print "<th>preço</th>";
-    print "<th>estoque</th>";
-    print "<th>sku</th>";
-    print "<th>ação</th>";
+    print "<th>Foto</th>";
+    print "<th>Nome do produto</th>";
+    print "<th>Descrição</th>";
+    print "<th>Preço</th>";
+    print "<th>Estoque</th>";
+    print "<th>Sku</th>";
+    print "<th>Ação</th>";
     print "</tr>";
     while ($row = $res->fetch_object()) {
         print "<tr>";
@@ -68,13 +75,13 @@ if ($column == 0) {
             $imagens = scandir($Destine);
             foreach ($imagens as $imagem) {
                 if ($imagem != '.' && $imagem != '..') {
-                    echo "<img src='" . $Destine . $imagem . "' alt='Imagen Id' height='120px' width='120px'>";
+                    echo "<img src='" . $Destine . $imagem . "' alt='Imagen Id' height='130px' width='130px'>";
                 }
             }
         }
         print "<td>" . $row->nome_produto;
         print "<td>" . $row->descrição;
-        print "<td>" . $row->preço;
+        print "<td style='width: -35px;'>R$ "  . $row->preço;
         print "<td>" . $row->estoque;
         print "<td><pre>" . $row->SKU;
         print "<td><button class='editar' onclick=\"location.href='?page=editar&id=".$row->id."';\">editar</button>

@@ -64,6 +64,7 @@
     p {
         font-weight: bold;
         font-size: 14px;
+        line-height: 9px;
     }
 </style>
 
@@ -95,13 +96,10 @@ if ($column == 0) {
         echo "<button class='excluir' onclick=\"if(confirm('Deseja excluir este produto?')){location.href='?page=save-product&acao=delete&id=" . $row->id . "';}else{false;}\">excluir</button>";
         echo "<div class='location-text'>";
         echo "<h2>" . $row->nome_produto . "</h2>";
-        echo "<p>Descrição:<br>" . $row->descrição . "</p>";
+        echo "<p>Descrição:<br><p style='font-size: 8pt;'>" . $row->descrição . "</p></p>";
         echo "<p>Preço: " . $row->preço . "</p>";
         echo "<p>Estoque: " . $row->estoque . "</p>";
         echo "<p>Sku: " . $row->SKU . "</p>";
-        echo "</div>";
-        echo "<div class='div-location'>";
-
         echo "<br><br>";
         echo "</div>";
         echo "</div>";

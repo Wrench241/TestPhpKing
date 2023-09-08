@@ -23,7 +23,7 @@ if ($res01->num_rows > 0 && $res02->num_rows > 0) {
     $table_products = "
     CREATE TABLE $table01 (
         id INT AUTO_INCREMENT PRIMARY KEY,
-        nome_produto VARCHAR(40) NOT NULL,
+        nome_produto VARCHAR(80) NOT NULL,
         SKU VARCHAR(80) UNIQUE NOT NULL,
         descrição TEXT,
         preço DECIMAL(10, 2) NOT NULL,
@@ -33,7 +33,7 @@ if ($res01->num_rows > 0 && $res02->num_rows > 0) {
     $table_variação = "
     CREATE TABLE $table02 (
         id INT AUTO_INCREMENT PRIMARY KEY,
-        descrição_variação VARCHAR(30) NOT NULL,
+        descrição_variação VARCHAR(200) NOT NULL,
         variação_tamanho VARCHAR(20),
         variação_cor VARCHAR(20),
         product_id INT NOT NULL,
