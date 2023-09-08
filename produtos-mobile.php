@@ -66,6 +66,10 @@
         font-size: 14px;
         line-height: 9px;
     }
+    .div-father{
+        margin-bottom: 70px;
+
+    }
 </style>
 
 <?php
@@ -79,6 +83,7 @@ if ($column == 0) {
 } else {
 
     while ($row = $res->fetch_object()) {
+        echo "<div class='div-father'>";
         echo "<div class='product-row'>";
         $Destine = "www/produto/" . $row->id . "/";
 
@@ -101,6 +106,7 @@ if ($column == 0) {
         echo "<p>Estoque: " . $row->estoque . "</p>";
         echo "<p>Sku: " . $row->SKU . "</p>";
         echo "<br><br>";
+        echo "</div>";
         echo "</div>";
         echo "</div>";
     }
